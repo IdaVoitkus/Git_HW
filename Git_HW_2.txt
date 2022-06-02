@@ -1,0 +1,132 @@
+GitHub. HW_2
+#Для выполнения домашнего задания необходимо предварительно подготовить рабочее окружение. 
+Для этого необходимо: 
+*Создать внешний репозиторий 
+1. Авторизоваться на сайте https://github.com/ под своим логином и паролем.
+2. На главной странице в верхнем правом углу нажать на кнопку "+" 
+3. Из выпадающего спика выбрать и нажать на кнопку "new repository"
+4. Заполнить "Repository name" текстом с названием репозитория, например, "GIT"
+5. Поставить галочку в пункте "Add a README file"
+6. Нажать кнопку "Create repository".
+*Клонировать внешний репозиторий на пк
+1. На локальном компьютере зайти в терминал через рабочую папку.
+2. git clone ссылка на внешний репозиторий
+*Перейти в терминале в созданный локальный репозиторий
+cd GIT
+
+1) На локальном репозитории сделать ветки для:
+- Postman
+git branch Postman
+- Jmeter
+git branch Jmeter
+- CheckLists
+git branch Checklists
+- Bug Reports
+git branch Bug_Reports
+- SQL
+git branch SQL
+- Charles
+git branch Charles
+- Mobile testing
+git branch Mobile_testing
+
+2) Запушить все ветки на внешний репозиторий.
+git push -u origin Postman Jmeter Checklists Bug_Reports SQL Charles Mobile_testing
+
+3) В ветке Bug Reports сделать текстовый документ со структурой баг репорта.
+#перейти на ветку Bug_Reports:
+git checkout Bug_Reports  
+#создать документ и зайти в него:
+vim bugreport1.txt
+# в появившемся окне нажать i (INSERT), чтобы открылся режим редактирования
+# ввести данные в документ, например:
+Name: Bug report
+Summary: Programm main menu: the "Edit" button is named incorrectly,as an "Edjt"
+STR:Open  the "ListBoxer" programm
+Result:The "Edit" button is named as an “Edjt"
+Expected result: The "Edit" button is named as an “Edit"
+Reporter: Ida Voitkus
+Priority: Lowest
+Environment: Windows 10 Home, х64,Google Chrome v98.0.4758.102
+# сохранить изменения и выйти из режима редактирования: 
+нажать кнопку "Esc"
+ввести:wq 
+нажать кнопку "Enter"
+
+4) Запушить структуру багрепорта на внешний репозиторий.  
+#Добавить файл под гит:
+git add bugreport1.txt
+#Закоммитить файл:
+git commit -m "add bugreport1.txt"
+#Запушить файл:
+git push
+
+5) Вмержить ветку Bug_Reports в Main.
+#перейти на ветку main: 
+git checkout main
+#вмержить ветку:
+git merge Bug_Reports -m "add Bug_Reports brain"
+
+6) Запушить main на внешний репозиторий.
+git push
+
+7) В ветке CheckLists набросать структуру чек листа.
+#перейти на ветку Checklists: 
+git checkout Checklists
+#создать документ и зайти в него:
+vim checklist1.txt
+# в появившемся окне нажать i (INSERT), чтобы открылся режим редактирования
+# ввести данные в документ, например:
+Environment: Xiaomi Mi A3, model M1906F9SH, Android v.11, build number: qssi-user 11 RKQ1.200903.002 V12.0.23.0.RFQMIXM  
+Tester: Ida Voitkus 
+Test date: 24.05.2022
+
+№	Checking	                Expected result	                            Actual result	Comment
+1	Install app by using APK-file	App was installed successfully	            ok
+2	Open App	                App was opened successfully                 ok
+3	Press the button "Add widget"	"The button ""Add widget"" is clickable     ok
+                                        The window ""Add to Home Screen"" appears
+                                        Widget appeared on screen"
+4	Long tap on widgets	        The display sliders on all widget borders   ok
+5	Press the button "Save data"	"The button ""Save data"" is clickable,     ok
+                                        a notification ""data 
+                                        was saved successfully"" appears"
+6	Press the button "Send e-mail"	"The button ""Send e-mail"" is clickable,   ok
+                                        window for sending a message
+                                        appears with automatically filled in information
+                                        about the recipient of the letter, 
+                                        with an attachment and 
+                                        the message ""Android device info"
+7	Press the button "Clear data"	"The button ""Clear data"" is clickable,    ok
+                                        a notification "data was successfully deleted"appears
+8	Press again the button          Notification "Data does not exist"          ok
+        "Clear data" 
+# сохранить изменения и выйти из режима редактирования: 
+нажать кнопку "Esc"
+ввести:wq 
+нажать кнопку "Enter"
+
+8) Запушить структуру на внешний репозиторий.
+#Добавить файл под гит:
+git add checklist1.txt
+#Закоммитить файл:
+git commit -m "add checklist1.txt"
+#Запушить файл:
+git push
+
+9. На внешнем репозитории сделать Pull Request ветки CheckLists в main
+Precondition: Пользователь авторизован на сайте, выполнен вход в репозиторий GIT
+STR:
+1. Нажать на кнопку "Pull requests"
+2. Нажать кнопку "Compare&pull request"
+3. Нажать кнопку "Create pull request"
+4. Нажать кнопку "Merge pull request"
+5. Нажать кнопку "Confirm merge"
+
+10. Синхронизировать Внешнюю и Локальную ветки Main
+#в терминале перейти на фетку main:
+git checkout main
+#просмотреть наличие изменений (не обязательная команда)
+git fetch
+#синхронизировать ветки:
+git pull
